@@ -1,4 +1,4 @@
-Flask==2.2.2
+Flask==3.0.3
 flask_bootstrap==3.3.7.1
 flask_ckeditor==0.5.1
 flask_login==0.6.3
