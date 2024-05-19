@@ -66,9 +66,9 @@ class User(UserMixin, db.Model):
 class Comments(UserMixin, db.Model):
     __tablename__ = "comments"
     id = db.Column(db.Integer, primary_key=True)
-    post_id = db.Column(db.Integer, db.ForeignKey('blog_posts.id'))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    name = db.Column(db.String(250), db.ForeignKey('users.name'))
+    post_id = db.Column(db.Integer)
+    user_id = db.Column(db.Integer)
+    name = db.Column(db.String(250))
     body = db.Column(db.Text, nullable=False)
 
 @login_manager.user_loader
