@@ -43,6 +43,7 @@
 
       <!-- New Post -->
       <!-- TODO: Only show Create Post button if user id is 1 (admin user) -->
+    {% if logged_in %}
       <div class="d-flex justify-content-end mb-4">
         <a
           class="btn btn-primary float-right"
@@ -50,7 +51,11 @@
           >Create New Post</a
         >
       </div>
-
+    {% else %}
+    <div class="d-flex justify-content-end mb-4">
+        <h5 style="color: red; text-align:center">You need login to add new post!</h5>
+      </div>
+    {% endif %}
       <!-- Pager-->
       <div class="d-flex justify-content-end mb-4">
         <a class="btn btn-secondary text-uppercase" href="#!">Older Posts →</a>
