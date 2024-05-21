@@ -251,7 +251,7 @@ def edit_post(post_id):
         post.title = edit_form.title.data
         post.subtitle = edit_form.subtitle.data
         post.img_url = edit_form.img_url.data
-        post.author = current_user
+        post.author = current_user.name
         post.body = edit_form.body.data
         db.session.commit()
         return redirect(url_for("show_post", post_id=post.id))
@@ -265,6 +265,10 @@ def delete_post(post_id):
     post_to_delete = db.get_or_404(BlogPost, post_id)
     db.session.delete(post_to_delete)
     db.session.commit()
+    delete_comments = db.session.execute(db.select(Comments).where(Comments.post_id == post_id)).scalars().all()
+    for comment in delete_comments:
+        db.session.delete(comment)
+        db.session.commit()
     return redirect(url_for('get_all_posts'))
 
 
